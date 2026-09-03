@@ -15,6 +15,7 @@
   html, body { background: #0A0A0A; color: #fff; font-family: 'Archivo', sans-serif; height: 100%; }
   a { color: #E01E1E; } a:hover { color: #fff; }
   textarea, input, button, select { font-family: inherit; }
+  @media (max-width: 819px) { textarea, input, select { font-size: 16px !important; } }
   textarea:focus, input:focus { outline: 2px solid #E01E1E; outline-offset: -2px; }
   @keyframes spin { to { transform: rotate(360deg); } }
   @keyframes themeSpin { from { transform: rotate(-140deg) scale(.4); opacity: 0; } to { transform: rotate(0) scale(1); opacity: 1; } }
@@ -24,7 +25,7 @@
 </style>
 </helmet>
 <div ref="{{ rootRef }}" style="height:100vh;display:flex;flex-direction:column;background:var(--bg,#0A0A0A);color:var(--fg,#fff);overflow:hidden">
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:24px 32px 18px;border-bottom:1px solid var(--b1,#1f1f1f);position:relative;overflow:hidden;flex-shrink:0">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:{{ headPad }};border-bottom:1px solid var(--b1,#1f1f1f);position:relative;overflow:hidden;flex-shrink:0">
     <div style="position:absolute;top:0;right:0;width:260px;height:120px;background-image:radial-gradient(circle,var(--b3,#333) 1.5px,transparent 1.5px);background-size:14px 14px;opacity:.6;pointer-events:none"></div>
     <div style="position:relative">
       <div style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#E01E1E;margin-bottom:8px">ReachmyAPI · {{ t.subtitle }}</div>
@@ -64,8 +65,8 @@
     </div>
   </div>
 
-  <div style="display:grid;grid-template-columns:{{ gridCols }};flex:1;min-height:0;overflow-y:{{ narrowScroll }}">
-    <div style="border-right:{{ sidebarBorder }};padding:24px;display:flex;flex-direction:column;gap:24px;overflow-y:{{ paneScroll }};min-height:0">
+  <div style="display:{{ layoutDisplay }};flex-direction:column;grid-template-columns:{{ gridCols }};flex:1;min-height:0;overflow-y:{{ narrowScroll }};-webkit-overflow-scrolling:touch">
+    <div style="border-right:{{ sidebarBorder }};border-bottom:{{ sidebarBottom }};padding:{{ sidePad }};display:flex;flex-direction:column;gap:24px;overflow-y:{{ paneScroll }};min-height:{{ paneMin }};flex-shrink:0">
       <div>
         <div style="font-family:'Archivo Black',sans-serif;font-size:18px;margin-bottom:12px">{{ t.import }}</div>
         <textarea value="{{ pasteText }}" onChange="{{ onPaste }}" placeholder="{{ t.pastePh }}" style="width:100%;height:110px;background:var(--s2,#141414);border:1px solid var(--b2,#2a2a2a);color:var(--t1,#ddd);padding:12px;font-size:12px;font-family:ui-monospace,Menlo,monospace;resize:vertical;border-radius:4px"></textarea>
@@ -162,12 +163,12 @@
       </div>
     </div>
 
-    <div style="padding:24px 32px;overflow-y:{{ paneScroll }};min-height:0;display:flex;flex-direction:column;gap:32px">
+    <div style="padding:{{ mainPad }};overflow-y:{{ paneScroll }};min-height:{{ paneMin }};display:flex;flex-direction:column;gap:32px;flex-shrink:0">
       <sc-if value="{{ empty }}" hint-placeholder-val="{{ true }}">
-        <div style="flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:40px 0">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:{{ emptyPad }}">
           <div style="display:inline-flex;background:#E01E1E;color:#fff;font-family:'Archivo Black',sans-serif;font-size:18px;padding:8px 18px;border-radius:6px;margin-bottom:20px">01</div>
-          <div style="font-family:'Archivo Black',sans-serif;font-size:52px;line-height:1.05;max-width:640px;letter-spacing:-.01em">{{ t.emptyTitle }} <span style="color:#E01E1E">{{ t.emptyAccent }}</span></div>
-          <div style="font-size:18px;line-height:1.6;color:var(--mu,#888);max-width:520px;margin-top:20px">{{ t.emptyBody }}</div>
+          <div style="font-family:'Archivo Black',sans-serif;font-size:{{ emptyTitleSize }};line-height:1.05;max-width:640px;letter-spacing:-.01em;overflow-wrap:anywhere">{{ t.emptyTitle }} <span style="color:#E01E1E">{{ t.emptyAccent }}</span></div>
+          <div style="font-size:{{ emptyBodySize }};line-height:1.6;color:var(--mu,#888);max-width:520px;margin-top:20px">{{ t.emptyBody }}</div>
         </div>
       </sc-if>
       <sc-for list="{{ specs }}" as="spec" hint-placeholder-count="0">
@@ -205,7 +206,7 @@
           <div style="border:1px solid var(--b1,#1f1f1f);border-radius:6px;overflow:hidden">
             <sc-for list="{{ spec.rows }}" as="row" hint-placeholder-count="0">
               <div style="border-bottom:1px solid var(--b1,#1a1a1a)">
-                <div onClick="{{ row.toggle }}" style="display:grid;grid-template-columns:12px 52px minmax(160px,1fr) minmax(70px,auto) 48px 48px;align-items:center;gap:10px;padding:10px 14px;background:{{ row.bg }};opacity:{{ row.opacity }};cursor:pointer" style-hover="background:var(--s3,#161616)">
+                <div onClick="{{ row.toggle }}" style="display:grid;grid-template-columns:{{ rowCols }};align-items:center;gap:{{ rowGap }};padding:{{ rowPad }};background:{{ row.bg }};opacity:{{ row.opacity }};cursor:pointer" style-hover="background:var(--s3,#161616)">
                   <span style="width:12px;height:12px;border-radius:50%;background:{{ row.color }};animation:{{ row.anim }}"></span>
                   <span style="font-weight:900;font-size:12px;letter-spacing:.06em;color:{{ row.mColor }}">{{ row.method }}</span>
                   <div style="min-width:0"><div style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--t1,#eee);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ row.path }}</div><div style="font-size:11px;color:var(--dim,#777);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">{{ row.summary }}</div></div>
@@ -731,7 +732,7 @@ class Component extends DCLogic {
       scheduleLast: lastRun ? t.lastRun + ' ' + new Date(lastRun).toLocaleTimeString(loc) : '',
       lang, onLangSelect: e => this.set({ lang: e.target.value }), year: new Date().getFullYear(),
       startTour: this.startTour, dragging: this.state.dragging,
-      ...(() => { const narrow = (this.state.vw || 1200) < 820; return { gridCols: narrow ? '1fr' : '320px minmax(0,1fr)', sidebarBorder: narrow ? 'none' : '1px solid var(--b1,#1f1f1f)', paneScroll: narrow ? 'visible' : 'auto', narrowScroll: narrow ? 'auto' : 'hidden' }; })(),
+      ...(() => { const narrow = (this.state.vw || 1200) < 820; return { gridCols: narrow ? '1fr' : '320px minmax(0,1fr)', layoutDisplay: narrow ? 'flex' : 'grid', sidebarBorder: narrow ? 'none' : '1px solid var(--b1,#1f1f1f)', sidebarBottom: narrow ? '1px solid var(--b1,#1f1f1f)' : 'none', paneScroll: narrow ? 'visible' : 'auto', paneMin: narrow ? 'auto' : '0', narrowScroll: narrow ? 'auto' : 'hidden', sidePad: narrow ? '16px' : '24px', headPad: narrow ? '18px 16px 14px' : '24px 32px 18px', rowCols: narrow ? '10px 40px minmax(0,1fr) minmax(0,60px) 40px 40px' : '12px 52px minmax(160px,1fr) minmax(70px,auto) 48px 48px', rowGap: narrow ? '6px' : '10px', rowPad: narrow ? '10px 10px' : '10px 14px', mainPad: narrow ? '16px' : '24px 32px', emptyPad: narrow ? '24px 0' : '40px 0', emptyTitleSize: narrow ? '32px' : '52px', emptyBodySize: narrow ? '15px' : '18px' }; })(),
       openTerms: () => this.setState({ legal: 'terms' }), openPrivacy: () => this.setState({ legal: 'privacy' }), openDisclaimer: () => this.setState({ legal: 'disclaimer' }), legalClose: () => this.setState({ legal: null }),
       consentOpen: this.state.consented === false, consentChecked: this.state.consentChecked, consentDisabled: !this.state.consentChecked, consentOpacity: this.state.consentChecked ? 1 : 0.5,
       onConsentCheck: e => this.setState({ consentChecked: e.target.checked }), acceptConsent: this.acceptConsent,
