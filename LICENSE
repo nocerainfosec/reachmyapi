@@ -1,0 +1,44 @@
+ReachmyAPI Source-Available License v1.0
+Copyright (c) 2026 Guilherme Nocera (nocerainfosec.com.br) — https://reachmyapi.io
+
+1. DEFINITIONS
+   "Software" means ReachmyAPI, including its source code, assets, and documentation.
+   "Author" means Guilherme Nocera.
+   "You" means any individual or entity exercising the rights granted below.
+
+2. GRANT OF USE
+   The Author grants You a worldwide, royalty-free, non-exclusive license to:
+   a) use and run the Software for any purpose, personal or commercial;
+   b) copy and redistribute verbatim, unmodified copies of the Software,
+      provided this license and all attribution notices are kept intact.
+
+3. NO MODIFICATION WITHOUT CONSENT
+   You may NOT modify, adapt, translate, fork, or create derivative works of the
+   Software, nor distribute any modified version, UNLESS You have first contacted
+   the Author and obtained the Author's prior written consent for that change.
+   Requests must be sent to: contato@nocerainfosec.com.br
+   Submitting a change proposal (e.g. a pull request) to the official repository
+   and receiving the Author's written approval satisfies this requirement.
+
+4. ATTRIBUTION
+   All copies and permitted distributions must retain, visibly:
+   - the name "ReachmyAPI",
+   - the credit "Created by Guilherme Nocera — nocerainfosec.com.br",
+   - this license text.
+   The in-app attribution shown in the interface must not be removed or obscured.
+
+5. TRADEMARKS
+   "ReachmyAPI", the reachmyapi.io domain, and "nocerainfosec" are marks of the
+   Author. This license does not grant permission to use them except for the
+   attribution required in Section 4.
+
+6. TERMINATION
+   Any breach of Sections 3 or 4 automatically terminates the rights granted to
+   You under this license.
+
+7. DISCLAIMER OF WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED. THE AUTHOR SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+   LIABILITY ARISING FROM THE USE OF THE SOFTWARE.
+
+To request permission for modifications, contact: contato@nocerainfosec.com.br
