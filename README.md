@@ -4,6 +4,14 @@ Reachability tester for Swagger / OpenAPI APIs. Import one or many specs, run th
 
 🔗 **reachmyapi.io** · Created by **Guilherme Nocera** — [nocerainfosec.com.br](https://nocerainfosec.com.br)
 
+<img width="3416" height="2140" alt="image" src="https://github.com/user-attachments/assets/245c9dd1-12a5-4c50-ac07-eb32ca65b82c" />
+
+<img width="3420" height="2136" alt="image" src="https://github.com/user-attachments/assets/bb57a905-bf44-47af-8dde-28f1332ddbcc" />
+
+<img width="2154" height="1808" alt="image" src="https://github.com/user-attachments/assets/1208c23a-1922-4164-8c95-9148a92b24aa" />
+
+
+
 ---
 
 ## Features
