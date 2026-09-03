@@ -120,7 +120,7 @@
           <div style="font-family:'Archivo Black',sans-serif;font-size:18px">{{ t.proxy }}</div>
           <button onClick="{{ toggleProxy }}" style="border:2px solid {{ proxyBorder }};background:{{ proxyBg }};color:{{ proxyFg }};font-weight:700;font-size:12px;padding:5px 12px;border-radius:4px;cursor:pointer;letter-spacing:.04em">{{ proxyLabel }}</button>
         </div>
-        <input value="{{ proxyTpl }}" onChange="{{ onProxy }}" placeholder="https://corsproxy.io/?url={url}" style="width:100%;background:var(--s2,#141414);border:1px solid var(--b2,#2a2a2a);color:var(--t1,#ddd);padding:10px 12px;font-size:12px;font-family:ui-monospace,Menlo,monospace;border-radius:4px">
+        <input value="{{ proxyTpl }}" onChange="{{ onProxy }}" placeholder="https://corsproxy.io/?key=YOUR_API_KEY&url={url}" style="width:100%;background:var(--s2,#141414);border:1px solid var(--b2,#2a2a2a);color:var(--t1,#ddd);padding:10px 12px;font-size:12px;font-family:ui-monospace,Menlo,monospace;border-radius:4px">
         <div style="font-size:12px;color:var(--mu,#888);line-height:1.5;margin-top:8px">{{ t.proxyHint }}</div>
       </div>
 
@@ -334,7 +334,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;concurrency&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6,&quot;min&quot;:1,&quot;max&quot;:10,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Testing&quot;},&quot;timeoutMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8000,&quot;min&quot;:1000,&quot;max&quot;:30000,&quot;step&quot;:500,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Testing&quot;},&quot;perRequestDelayMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;min&quot;:0,&quot;max&quot;:2000,&quot;step&quot;:50,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Testing&quot;},&quot;maxEndpointsPerRun&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:500,&quot;min&quot;:10,&quot;max&quot;:5000,&quot;step&quot;:10,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Testing&quot;}}">
 class Component extends DCLogic {
-  state = { specs: [], results: {}, history: [], filters: { GET: true, POST: false, PUT: false, PATCH: false, DELETE: false }, pasteText: '', urlText: '', oneUrl: '', oneMethod: 'GET', importErr: '', running: false, proxyOn: true, proxyTpl: 'https://api.allorigins.win/raw?url={url}', theme: 'dark', lang: 'en', every: 0, nextAt: null, lastRun: null, isFull: false, now: Date.now(), expanded: null, copied: null, langOpen: false, tour: null, dragging: false, legal: null, consented: null, consentChecked: false, vw: 1200 };
+  state = { specs: [], results: {}, history: [], filters: { GET: true, POST: false, PUT: false, PATCH: false, DELETE: false }, pasteText: '', urlText: '', oneUrl: '', oneMethod: 'GET', importErr: '', running: false, proxyOn: false, proxyTpl: 'https://corsproxy.io/?key=YOUR_API_KEY&url={url}', theme: 'dark', lang: 'en', every: 0, nextAt: null, lastRun: null, isFull: false, now: Date.now(), expanded: null, copied: null, langOpen: false, tour: null, dragging: false, legal: null, consented: null, consentChecked: false, vw: 1200 };
   fileRef = React.createRef(); rootRef = React.createRef();
   KEY = 'apireach.specs.v1';
   METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
